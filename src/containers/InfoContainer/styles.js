@@ -17,7 +17,7 @@ export const StyledInfoContainer = styled.div`
             padding-left: 5px;
         }
 
-        .cpu-icon {
+        .title-icon {
             font-size: 24px;
         }
     }

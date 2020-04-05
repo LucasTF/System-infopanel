@@ -5,13 +5,14 @@ export default function InfoBox({
     title,
     information,
     displayIcon,
+    colorTheme,
     gridPositions,
 }) {
     const icon = displayIcon ? (
         <img src={displayIcon} className='logo' />
     ) : null;
     return (
-        <StyledInfoBox gridPositions={gridPositions}>
+        <StyledInfoBox colorTheme={colorTheme} gridPositions={gridPositions}>
             <legend>{title}</legend>
             <div>
                 {icon}
