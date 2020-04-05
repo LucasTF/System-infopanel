@@ -15,10 +15,10 @@ const Index = ({ cpu, gpu, ram, os }) => {
                 <title>SystemInfo</title>
             </Head>
             <div className='container'>
+                <OSContainer hardware={os} />
                 <CpuContainer hardware={cpu} />
                 <GpuContainer hardware={gpu} />
                 <RamContainer hardware={ram} />
-                <OSContainer hardware={os} />
             </div>
         </Layout>
     );

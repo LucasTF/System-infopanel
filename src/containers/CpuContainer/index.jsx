@@ -21,7 +21,7 @@ export default function GpuContainer({ hardware }) {
     }
 
     return (
-        <InfoContainer icon={<FiCpu />} title='CPU Information'>
+        <InfoContainer anchor='cpu' icon={<FiCpu />} title='CPU Information'>
             <InfoBox
                 title='CPU'
                 information={hardware.brand}

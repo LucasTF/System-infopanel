@@ -31,7 +31,11 @@ export default function GpuContainer({ hardware }) {
     }
 
     return (
-        <InfoContainer icon={<GiProcessor />} title='GPU Information'>
+        <InfoContainer
+            anchor='gpu'
+            icon={<GiProcessor />}
+            title='GPU Information'
+        >
             <InfoBox
                 title='GPU'
                 information={hardware.controllers[0].model}

@@ -3,9 +3,13 @@ import styled from 'styled-components';
 export const StyledNavbar = styled.div`
     display: flex;
     justify-content: left;
-    background: #333;
+    background: #2f2f2f;
+    opacity: 0.9;
     margin-bottom: 16px;
     box-shadow: 0 -2px 0 #ccc;
+    position: fixed;
+    top: 0;
+    width: 100%;
 
     .logo-container {
         font-size: 24px;
@@ -29,10 +33,10 @@ export const StyledNavbar = styled.div`
 
             a {
                 text-decoration: none;
+                color: unset;
             }
 
             :hover {
-                background: #333;
                 text-shadow: 1px 1px 10px #fff;
                 box-shadow: inset 0 -2px 0 #fff;
             }

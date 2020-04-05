@@ -2,7 +2,12 @@ import React from 'react';
 import { StyledInfoContainer } from './styles';
 import { IconContext } from 'react-icons';
 
-export default function InfoContainer({ icon, title, children }) {
+export default function InfoContainer({
+    anchor = null,
+    icon,
+    title,
+    children,
+}) {
     const iconLogo = icon ? (
         <IconContext.Provider value={{ className: 'title-icon' }}>
             {icon}
@@ -16,7 +21,7 @@ export default function InfoContainer({ icon, title, children }) {
     }
 
     return (
-        <StyledInfoContainer>
+        <StyledInfoContainer id={anchor}>
             <div className='title'>
                 {iconLogo}
                 <h2>{title}</h2>

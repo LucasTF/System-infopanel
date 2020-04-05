@@ -18,7 +18,7 @@ export default function RamContainer({ hardware }) {
     };
 
     return (
-        <InfoContainer icon={<FaMemory />} title='RAM Information'>
+        <InfoContainer anchor='ram' icon={<FaMemory />} title='RAM Information'>
             <InfoBox
                 title='Total RAM'
                 information={`${formatBytes(hardware.mem.total, 2)} GB`}

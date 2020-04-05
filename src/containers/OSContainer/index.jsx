@@ -12,6 +12,7 @@ import * as Color from '../../styles/utils/Colors';
 export default function OSContainer({ hardware }) {
     return (
         <InfoContainer
+            anchor='os'
             icon={<MdComputer />}
             title='Operating System Information'
         >

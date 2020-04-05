@@ -11,12 +11,20 @@ export default function Navbar() {
             </div>
             <ul>
                 <li>
-                    <a>CPU</a>
+                    <a href='#os'>Operating System</a>
                 </li>
-                <li>GPU</li>
-                <li>RAM</li>
-                <li>Operating System</li>
-                <li>Motherboard</li>
+                <li>
+                    <a href='#cpu'>CPU</a>
+                </li>
+                <li>
+                    <a href='#gpu'>GPU</a>
+                </li>
+                <li>
+                    <a href='#ram'>RAM</a>
+                </li>
+                <li>
+                    <a href='#mobo'>Motherboard</a>
+                </li>
             </ul>
         </StyledNavbar>
     );
