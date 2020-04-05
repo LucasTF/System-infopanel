@@ -16,6 +16,7 @@ export default function Navbar() {
                 <li>GPU</li>
                 <li>RAM</li>
                 <li>Operating System</li>
+                <li>Motherboard</li>
             </ul>
         </StyledNavbar>
     );

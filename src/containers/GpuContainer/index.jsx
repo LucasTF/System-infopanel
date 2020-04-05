@@ -5,17 +5,38 @@ import InfoBox from '../../components/InfoBox';
 
 import { GiProcessor } from 'react-icons/gi';
 import NvidiaLogo from '../../assets/svg/nvidia.svg';
+import AmdLogo from '../../assets/svg/amd.svg';
+import IntelLogo from '../../assets/svg/intel.svg';
 
 import * as Color from '../../styles/utils/Colors';
 
 export default function GpuContainer({ hardware }) {
+    let logo, color;
+    switch (hardware.controllers[0].vendor.toLowerCase()) {
+        case 'nvidia':
+            logo = NvidiaLogo;
+            color = Color.NVIDIA;
+            break;
+        case 'amd':
+            logo = AmdLogo;
+            color = Color.AMD;
+            break;
+        case 'intel®':
+            logo = IntelLogo;
+            color = Color.INTEL;
+            break;
+        default:
+            logo = null;
+            color = null;
+    }
+
     return (
         <InfoContainer icon={<GiProcessor />} title='GPU Information'>
             <InfoBox
                 title='GPU'
                 information={hardware.controllers[0].model}
-                displayIcon={NvidiaLogo}
-                colorTheme={Color.NVIDIA}
+                displayIcon={logo}
+                colorTheme={color}
                 gridPositions={{
                     gridColumnStart: 1,
                     gridColumnEnd: 4,
@@ -26,8 +47,8 @@ export default function GpuContainer({ hardware }) {
             <InfoBox
                 title='Manufacturer'
                 information={hardware.controllers[0].vendor}
-                displayIcon={NvidiaLogo}
-                colorTheme={Color.NVIDIA}
+                displayIcon={logo}
+                colorTheme={color}
                 gridPositions={{
                     gridColumnStart: 4,
                     gridColumnEnd: 5,
@@ -38,7 +59,7 @@ export default function GpuContainer({ hardware }) {
             <InfoBox
                 title='VRAM'
                 information={`${hardware.controllers[0].vram} MB`}
-                colorTheme={Color.NVIDIA}
+                colorTheme={color}
                 gridPositions={{
                     gridColumnStart: 1,
                     gridColumnEnd: 2,
@@ -49,7 +70,7 @@ export default function GpuContainer({ hardware }) {
             <InfoBox
                 title='Display Resolution'
                 information={`${hardware.displays[0].resolutionx}x${hardware.displays[0].resolutiony}`}
-                colorTheme={Color.NVIDIA}
+                colorTheme={color}
                 gridPositions={{
                     gridColumnStart: 2,
                     gridColumnEnd: 3,
@@ -60,7 +81,7 @@ export default function GpuContainer({ hardware }) {
             <InfoBox
                 title='Refresh Rate'
                 information={`${hardware.displays[0].currentRefreshRate}hz`}
-                colorTheme={Color.NVIDIA}
+                colorTheme={color}
                 gridPositions={{
                     gridColumnStart: 3,
                     gridColumnEnd: 4,
@@ -71,7 +92,7 @@ export default function GpuContainer({ hardware }) {
             <InfoBox
                 title='Connector'
                 information={hardware.displays[0].connection}
-                colorTheme={Color.NVIDIA}
+                colorTheme={color}
                 gridPositions={{
                     gridColumnStart: 4,
                     gridColumnEnd: 5,

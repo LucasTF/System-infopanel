@@ -9,6 +9,12 @@ export default function InfoContainer({ icon, title, children }) {
         </IconContext.Provider>
     ) : null;
 
+    if (!children) {
+        children = (
+            <p className='no-content'>There's no information available.</p>
+        );
+    }
+
     return (
         <StyledInfoContainer>
             <div className='title'>

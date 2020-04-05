@@ -19,6 +19,13 @@ export const INTEL = {
     textColor: '#0067B4',
 };
 
+export const W10 = {
+    mainColor: '#0078d6',
+    secondaryColor: '#006EC3',
+    legendColor: '#1784D9',
+    textColor: '#1784D9',
+};
+
 export const OK = {
     mainColor: '#379634',
     secondaryColor: '#499F46',

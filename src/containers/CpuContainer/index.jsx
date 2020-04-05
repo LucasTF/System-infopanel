@@ -12,7 +12,7 @@ import * as Colors from '../../styles/utils/Colors';
 export default function GpuContainer({ hardware }) {
     let logo, colorTheme;
 
-    if (hardware.manufacturer === 'Intel') {
+    if (hardware.manufacturer === 'Intel®') {
         logo = IntelLogo;
         colorTheme = Colors.INTEL;
     } else {

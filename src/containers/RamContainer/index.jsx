@@ -24,7 +24,7 @@ export default function RamContainer({ hardware }) {
                 information={`${formatBytes(hardware.mem.total, 2)} GB`}
                 gridPositions={{
                     gridColumnStart: 1,
-                    gridColumnEnd: 3,
+                    gridColumnEnd: 4,
                     gridRowStart: 1,
                     gridRowEnd: 1,
                 }}
@@ -33,8 +33,8 @@ export default function RamContainer({ hardware }) {
                 title='Used RAM'
                 information={`${formatBytes(hardware.mem.used, 2)} GB`}
                 gridPositions={{
-                    gridColumnStart: 3,
-                    gridColumnEnd: 4,
+                    gridColumnStart: 4,
+                    gridColumnEnd: 5,
                     gridRowStart: 1,
                     gridRowEnd: 1,
                 }}
@@ -44,8 +44,8 @@ export default function RamContainer({ hardware }) {
                 information={`${formatBytes(hardware.mem.free, 2)} GB`}
                 colorTheme={Colors.OK}
                 gridPositions={{
-                    gridColumnStart: 4,
-                    gridColumnEnd: 5,
+                    gridColumnStart: 5,
+                    gridColumnEnd: 6,
                     gridRowStart: 1,
                     gridRowEnd: 1,
                 }}
@@ -75,11 +75,21 @@ export default function RamContainer({ hardware }) {
                 }}
             />
             <InfoBox
-                title='Clock Speed'
-                information={`${hardware.layout[0].clockSpeed} Mhz`}
+                title='Voltage'
+                information={`${hardware.layout[0].voltageConfigured}v`}
                 gridPositions={{
                     gridColumnStart: 3,
                     gridColumnEnd: 4,
+                    gridRowStart: 2,
+                    gridRowEnd: 2,
+                }}
+            />
+            <InfoBox
+                title='Clock Speed'
+                information={`${hardware.layout[0].clockSpeed} Mhz`}
+                gridPositions={{
+                    gridColumnStart: 4,
+                    gridColumnEnd: 5,
                     gridRowStart: 2,
                     gridRowEnd: 2,
                 }}
@@ -90,13 +100,13 @@ export default function RamContainer({ hardware }) {
                     hardware.layout[0].clockSpeed > 2666 ? 'ON' : 'OFF'
                 }
                 colorTheme={
-                    hardware.layout[0].clockSpeed > 2660
+                    hardware.layout[0].clockSpeed > 2666
                         ? Colors.ON
                         : Colors.OFF
                 }
                 gridPositions={{
-                    gridColumnStart: 4,
-                    gridColumnEnd: 5,
+                    gridColumnStart: 5,
+                    gridColumnEnd: 6,
                     gridRowStart: 2,
                     gridRowEnd: 2,
                 }}

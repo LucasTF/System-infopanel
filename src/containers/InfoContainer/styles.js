@@ -27,5 +27,12 @@ export const StyledInfoContainer = styled.div`
         padding: 16px;
         display: grid;
         grid-gap: 16px;
+
+        .no-content {
+            font-size: 24px;
+            align-content: center;
+            text-align: center;
+            font-weight: bold;
+        }
     }
 `;
