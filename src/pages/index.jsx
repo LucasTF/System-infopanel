@@ -25,29 +25,28 @@ const Index = ({ cpu, gpu, ram, os }) => {
 };
 
 export async function getServerSideProps() {
-    let cpuData, gpuData, os;
-    let memoryData = {};
-    await si
-        .cpu()
-        .then((data) => (cpuData = data))
-        .catch((error) => console.log(error));
-    await si
-        .graphics()
-        .then((data) => (gpuData = data))
-        .catch((error) => console.log(error));
-    await si
-        .mem()
-        .then((data) => (memoryData.mem = data))
-        .catch((error) => console.log(error));
-    await si
-        .memLayout()
-        .then((data) => (memoryData.layout = data))
-        .catch((error) => console.log(error));
-    await si
-        .osInfo()
-        .then((data) => (os = data))
-        .catch((error) => console.log(error));
-    return { props: { cpu: cpuData, gpu: gpuData, ram: memoryData, os: os } };
+    const computerData = await Promise.all([
+        si.cpu(),
+        si.graphics(),
+        si.mem(),
+        si.memLayout(),
+        si.osInfo(),
+    ])
+        .then((data) => {
+            let modifiedData = {};
+            modifiedData.cpu = data[0];
+            modifiedData.gpu = data[1];
+            modifiedData = {
+                ...modifiedData,
+                ram: { mem: data[2], layout: data[3] },
+            };
+            modifiedData.os = data[4];
+            return modifiedData;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    return { props: { ...computerData } };
 }
 
 export default Index;
