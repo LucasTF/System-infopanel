@@ -4,13 +4,23 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "next src",
+        "dev": "next src server.js",
         "build": "next build src",
-        "start": "next start src"
+        "start": "NODE_ENV=production node server.js",
+        "pkg": "pkg . --targets node6-alpine-x64 --out-path pkg"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
+    "bin": "src/server.js",
+    "pkg": {
+        "assets": [
+            "src/.next/**/*"
+        ],
+        "scripts": [
+            "src/.next/dist/**/*.js"
+        ]
+    },
     "dependencies": {
         "next": "^9.3.4",
         "next-images": "^1.4.0",
