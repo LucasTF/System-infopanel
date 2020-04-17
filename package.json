@@ -1,36 +1,37 @@
 {
-    "name": "system-info",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "dev": "next src server.js",
-        "build": "next build src",
-        "start": "NODE_ENV=production node server.js",
-        "pkg": "pkg . --targets node6-alpine-x64 --out-path pkg"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bin": "src/server.js",
-    "pkg": {
-        "assets": [
-            "src/.next/**/*"
-        ],
-        "scripts": [
-            "src/.next/dist/**/*.js"
-        ]
-    },
-    "dependencies": {
-        "next": "^9.3.4",
-        "next-images": "^1.4.0",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
-        "react-icons": "^3.9.0",
-        "styled-components": "^5.0.1",
-        "systeminformation": "^4.23.1"
-    },
-    "devDependencies": {
-        "babel-plugin-styled-components": "^1.10.7"
-    }
+	"name": "system-info",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "node server.js",
+		"build": "next build",
+		"start": "NODE_ENV=production node server.js",
+		"pkg": "pkg . --targets latest --out-path dist"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bin": "server.js",
+	"pkg": {
+		"assets": [
+			".next/**/*"
+		],
+		"scripts": [
+			".next/dist/**/*.js"
+		]
+	},
+	"dependencies": {
+		"next": "^9.3.4",
+		"next-images": "^1.4.0",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"react-icons": "^3.9.0",
+		"styled-components": "^5.0.1",
+		"systeminformation": "^4.23.1"
+	},
+	"devDependencies": {
+		"babel-plugin-styled-components": "^1.10.7",
+		"pkg": "^4.4.7"
+	}
 }
