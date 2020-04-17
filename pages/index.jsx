@@ -25,7 +25,9 @@ const Index = ({ cpu, gpu, ram, os }) => {
 				selectedHw = <GpuContainer hardware={gpu} />;
 				break;
 			case 'ram':
-				selectedHw = <RamContainer hardware={ram} />;
+				selectedHw = (
+					<RamContainer hardware={ram} osType={os.platform} />
+				);
 				break;
 			default:
 				selectedHw = null;
@@ -43,7 +45,9 @@ const Index = ({ cpu, gpu, ram, os }) => {
 				{hardware ? (
 					hardware
 				) : (
-					<h2 className='default-msg'>No hardware selected</h2>
+					<h2 className='default-msg'>
+						Select a system part to get information.
+					</h2>
 				)}
 			</div>
 		</Layout>

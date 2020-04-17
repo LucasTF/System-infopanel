@@ -1,13 +1,13 @@
 import React from 'react';
 
 import InfoContainer from '../InfoContainer';
-import InfoBox from '../../components/InfoBox';
 
 import { MdComputer } from 'react-icons/md';
 
 import Windows10Logo from '../../assets/svg/windows10.svg';
 import UbuntuLogo from '../../assets/svg/ubuntu.svg';
 
+import InfoBoxBuilder from '../../utils/InfoBoxBuilder';
 import * as Color from '../../styles/utils/Colors';
 
 export default function OSContainer({ hardware }) {
@@ -81,48 +81,13 @@ export default function OSContainer({ hardware }) {
 		return relHw;
 	};
 
-	const buildInfoContainer = hw => {
-		const relHw = buildHwObject(hw);
-		const infoBoxArr = [];
-		const rows = [1, 1, 1, 1, 1];
-		const maxColumns = 5;
-
-		for (let key of Object.keys(relHw)) {
-			if (relHw[key].information && relHw[key].visible) {
-				const rowIndex = rows.findIndex(
-					row => row + relHw[key].size <= maxColumns
-				);
-				infoBoxArr.push(
-					<InfoBox
-						key={key}
-						title={relHw[key].title}
-						information={relHw[key].information}
-						displayIcon={relHw[key].displayIcon}
-						colorTheme={relHw[key].colorTheme}
-						gridPositions={{
-							gridColumnStart: rows[rowIndex],
-							gridColumnEnd: rows[rowIndex] + relHw[key].size,
-							gridRowStart: rowIndex + 1,
-							gridRowEnd: rowIndex + 1,
-						}}
-					/>
-				);
-				rows[rowIndex] += relHw[key].size;
-			}
-		}
-		infoBoxArr[
-			infoBoxArr.length - 1
-		].props.gridPositions.gridColumnEnd = maxColumns;
-		return infoBoxArr;
-	};
-
 	return (
 		<InfoContainer
 			anchor='os'
 			icon={<MdComputer />}
 			title='Operating System Information'
 		>
-			{buildInfoContainer(hardware)}
+			{InfoBoxBuilder.build(buildHwObject(hardware))}
 		</InfoContainer>
 	);
 }

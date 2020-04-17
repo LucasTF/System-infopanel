@@ -1,95 +1,79 @@
 import React from 'react';
 
 import InfoContainer from '../InfoContainer';
-import InfoBox from '../../components/InfoBox';
 
 import { FiCpu } from 'react-icons/fi';
 import AmdLogo from '../../assets/svg/amd.svg';
 import IntelLogo from '../../assets/svg/intel.svg';
 
+import InfoBoxBuilder from '../../utils/InfoBoxBuilder';
 import * as Colors from '../../styles/utils/Colors';
 
-export default function GpuContainer({ hardware }) {
-    let logo, colorTheme;
+export default function CpuContainer({ hardware }) {
+	const buildHwObject = hw => {
+		let logo, color;
 
-    if (hardware.manufacturer === 'Intel®') {
-        logo = IntelLogo;
-        colorTheme = Colors.INTEL;
-    } else {
-        logo = AmdLogo;
-        colorTheme = Colors.AMD;
-    }
+		if (hardware.manufacturer.toLowerCase().includes('intel')) {
+			logo = IntelLogo;
+			color = Colors.INTEL;
+		} else {
+			logo = AmdLogo;
+			color = Colors.AMD;
+		}
 
-    return (
-        <InfoContainer anchor='cpu' icon={<FiCpu />} title='CPU Information'>
-            <InfoBox
-                title='CPU'
-                information={hardware.brand}
-                displayIcon={logo}
-                colorTheme={colorTheme}
-                gridPositions={{
-                    gridColumnStart: 1,
-                    gridColumnEnd: 4,
-                    gridRowStart: 1,
-                    gridRowEnd: 1,
-                }}
-            />
-            <InfoBox
-                title='Manufacturer'
-                information={hardware.manufacturer}
-                displayIcon={logo}
-                colorTheme={colorTheme}
-                gridPositions={{
-                    gridColumnStart: 4,
-                    gridColumnEnd: 5,
-                    gridRowStart: 1,
-                    gridRowEnd: 1,
-                }}
-            />
-            <InfoBox
-                title='Base Clock'
-                information={`${hardware.speedmax}Ghz`}
-                colorTheme={colorTheme}
-                gridPositions={{
-                    gridColumnStart: 1,
-                    gridColumnEnd: 2,
-                    gridRowStart: 2,
-                    gridRowEnd: 2,
-                }}
-            />
-            <InfoBox
-                title='Cores'
-                information={hardware.physicalCores}
-                colorTheme={colorTheme}
-                gridPositions={{
-                    gridColumnStart: 2,
-                    gridColumnEnd: 3,
-                    gridRowStart: 2,
-                    gridRowEnd: 2,
-                }}
-            />
-            <InfoBox
-                title='Threads'
-                information={hardware.cores}
-                colorTheme={colorTheme}
-                gridPositions={{
-                    gridColumnStart: 3,
-                    gridColumnEnd: 4,
-                    gridRowStart: 2,
-                    gridRowEnd: 2,
-                }}
-            />
-            <InfoBox
-                title='Socket'
-                information={hardware.socket}
-                colorTheme={colorTheme}
-                gridPositions={{
-                    gridColumnStart: 4,
-                    gridColumnEnd: 5,
-                    gridRowStart: 2,
-                    gridRowEnd: 2,
-                }}
-            />
-        </InfoContainer>
-    );
+		const relHw = {
+			cpu: {
+				title: 'CPU',
+				visible: true,
+				displayIcon: logo,
+				colorTheme: color,
+				size: 2,
+				information: hw.brand,
+			},
+			manufacturer: {
+				title: 'Manufacturer',
+				visible: true,
+				displayIcon: logo,
+				colorTheme: color,
+				size: 2,
+				information: hw.manufacturer,
+			},
+			baseClock: {
+				title: 'Base Clock',
+				visible: true,
+				colorTheme: color,
+				size: 1,
+				information: `${hw.speedmax}Ghz`,
+			},
+			cores: {
+				title: 'Cores',
+				visible: true,
+				colorTheme: color,
+				size: 1,
+				information: hw.physicalCores,
+			},
+			threads: {
+				title: 'Threads',
+				visible: true,
+				colorTheme: color,
+				size: 1,
+				information: hw.cores,
+			},
+			socket: {
+				title: 'Socket',
+				visible: hw.socket,
+				colorTheme: color,
+				size: 1,
+				information: hw.socket,
+			},
+		};
+
+		return relHw;
+	};
+
+	return (
+		<InfoContainer anchor='cpu' icon={<FiCpu />} title='CPU Information'>
+			{InfoBoxBuilder.build(buildHwObject(hardware))}
+		</InfoContainer>
+	);
 }
