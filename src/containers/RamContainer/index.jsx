@@ -17,7 +17,6 @@ export default function RamContainer({ hardware, osType }) {
 			usedRam = hw.mem.used;
 			availableRam = hw.mem.free;
 		}
-
 		const relHw = {
 			totalRam: {
 				title: 'Total RAM',
@@ -54,13 +53,13 @@ export default function RamContainer({ hardware, osType }) {
 				title: 'Voltage',
 				visible: hw.layout[0].voltageConfigured !== -1,
 				size: 1,
-				information: hw.layout[0].voltageConfigured,
+				information: `${hw.layout[0].voltageConfigured}v`,
 			},
 			clock: {
 				title: 'Clock Speed',
 				visible: hw.layout[0].clockSpeed !== 0,
 				size: 1,
-				information: hw.layout[0].clockSpeed,
+				information: `${hw.layout[0].clockSpeed}Mhz`,
 			},
 			xmp: {
 				title: 'XMP',
