@@ -1,9 +1,7 @@
 import React from 'react';
 
 import InfoContainer from '../InfoContainer';
-import InfoBox from '../../components/InfoBox';
 
-import InfoBoxContainer from '../../utils/InfoBoxBuilder';
 import * as Colors from '../../styles/utils/Colors';
 
 import { FaMemory } from 'react-icons/fa';
@@ -25,7 +23,7 @@ export default function RamContainer({ hardware, osType }) {
 				title: 'Total RAM',
 				visible: true,
 				size: 2,
-				information: `${formatBytes(hardware.mem.total, 2)} GB`,
+				information: `${formatBytes(hw.mem.total, 2)} GB`,
 			},
 			usedRam: {
 				title: 'Used RAM',
