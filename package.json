@@ -2,7 +2,7 @@
 	"name": "system-info",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "index.tsx",
 	"scripts": {
 		"dev": "node server.js",
 		"build": "next build",
@@ -31,7 +31,12 @@
 		"systeminformation": "^4.23.1"
 	},
 	"devDependencies": {
+		"@types/node": "^13.13.0",
+		"@types/react": "^16.9.34",
+		"@types/styled-components": "^5.1.0",
+		"@types/systeminformation": "^3.54.1",
 		"babel-plugin-styled-components": "^1.10.7",
-		"pkg": "^4.4.7"
+		"pkg": "^4.4.7",
+		"typescript": "^3.8.3"
 	}
 }

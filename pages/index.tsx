@@ -9,11 +9,23 @@ import GpuContainer from '../src/containers/GpuContainer';
 import RamContainer from '../src/containers/RamContainer';
 import OSContainer from '../src/containers/OSContainer';
 
+interface IRam {
+	mem: Object;
+	layout: Object[];
+}
+
+interface IComputerData {
+	cpu: Object;
+	gpu: Object;
+	ram: IRam;
+	os: Object;
+}
+
 const Index = ({ cpu, gpu, ram, os }) => {
 	const [hardware, setHardware] = useState(null);
 
-	const selectHardwareHandler = hw => {
-		let selectedHw;
+	const selectHardwareHandler = (hw: string) => {
+		let selectedHw: JSX.Element;
 		switch (hw) {
 			case 'os':
 				selectedHw = <OSContainer hardware={os} />;
@@ -63,14 +75,15 @@ export async function getServerSideProps() {
 		si.osInfo(),
 	])
 		.then(data => {
-			let modifiedData = {};
-			modifiedData.cpu = data[0];
-			modifiedData.gpu = data[1];
-			modifiedData = {
-				...modifiedData,
-				ram: { mem: data[2], layout: data[3] },
+			const modifiedData: IComputerData = {
+				cpu: data[0],
+				gpu: data[1],
+				ram: {
+					mem: data[2],
+					layout: data[3],
+				},
+				os: data[4],
 			};
-			modifiedData.os = data[4];
 			return modifiedData;
 		})
 		.catch(error => {
